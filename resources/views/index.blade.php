@@ -19,11 +19,12 @@
         @foreach ($products as $product)
             <form action="{{ route('order', $product->id) }}" method="POST">
                 @csrf
-                <div class="border p-4 h-96">
+                <div class="border p-4 h-auto shadow-sm">
                     <img src="{{ $product->image ? asset('images/' . $product->image) : asset('images/test.jpg') }}"
                         alt="Product 1" class="w-full h-56 object-cover mb-2">
                     <h3 class="text-lg font-semibold">{{ $product->name }}</h3>
-                    <p class="text-gray-600">{{ number_format($product->price) }} تومان</p>
+                    <p class="text-gray-600 mt-2">قیمت : {{ number_format($product->price) }} تومان</p>
+                    <p class="text-gray-600">موجودی : {{ $product->stock }}</p>
                     <div class="flex items-center mt-4">
                         <div class="w-56 flex items-center gap-2">
                             <span>تعداد :</span>
@@ -38,7 +39,7 @@
         @endforeach
     </div>
 
-
+    @include('errors')
 </body>
 
 </html>

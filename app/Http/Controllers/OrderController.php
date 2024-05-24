@@ -23,7 +23,8 @@ class OrderController extends Controller
             ]);
             return view('order', compact('order'));
         } catch (\Throwable $th) {
-            dd($th);
+            $msg = 'خرید با موفقیت انجام نشد';
+            return back()->with('error', $msg);
         }
     }
 
@@ -33,10 +34,12 @@ class OrderController extends Controller
             $order->update([
                 'status' => 1
             ]);
-            $products = Product::all();
-            return view('index', compact('products'));
+
+            $msg = 'سفارش با موفقیت انجام شد';
+            return redirect(route('home'))->with('success', $msg);
         } catch (\Throwable $th) {
-            dd($th);
+            $msg = 'پرداخت با موفقیت انجام نشد';
+            return redirect(route('home'))->with('error', $msg);
         }
     }
 

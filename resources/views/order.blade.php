@@ -13,12 +13,6 @@
 <body dir="rtl">
     @include('header')
 
-    {{-- <div class="h-auto w-full p-4 mt-5">
-        <h1 class="text-center">محصولات</h1>
-        <div class="w-36 h-48 bg-gray-500">
-
-        </div>
-    </div> --}}
     <div class="w-full p-5">
         <div class="border p-4 h-auto w-96 m-auto">
             <img src="{{ $order->product->image ? asset('images/' . $order->product->image) : asset('images/test.jpg') }}"
